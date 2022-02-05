@@ -9,6 +9,7 @@ PARAMS=$DDIR/params.sh
 source $PARAMS
 
 PSQL="psql -A -d $DATABASE -v ON_ERROR_STOP=on -q -t"
+PSQLA="psql -A -d postgres -v ON_ERROR_STOP=on -q -t"
 
 OPSQL="psql -A -d $OLDDATABASE -v ON_ERROR_STOP=on -q -t"
 
