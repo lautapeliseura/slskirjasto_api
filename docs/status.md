@@ -14,7 +14,7 @@ Tavoitteet:
 * Uusi ja vanha kanta ovat kyseisellä koneella
 * Uuteen kantaan on pari demoraporttia katsottavissa php-reportsilla
 * Demoasennus on dokumentoitu
-* 
+ 
 ## Socialite ja käyttäjien hallinta
 
 Tavoitteet:

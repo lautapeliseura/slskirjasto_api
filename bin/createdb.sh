@@ -31,7 +31,7 @@ createdbuser () {
     fi
 }
 
-psqlexecute "select datname from pg_catalog.pg_database where datname='$DATABASE'" || return 1
+psqlaexecute "select datname from pg_catalog.pg_database where datname='$DATABASE'" || (echo "Unable to list databases" && exit 1)
 if [ "$res" != "$DATABASE" ]; then       
     createdb -E "UTF-8" $DATABASE
     if [ $? -ne 0 ]; then

@@ -31,6 +31,24 @@ psqlexecute () {
     return 0
 }
 
+
+# @description Execute single query/command on the postgres database
+# @arg $1 string command to execute
+# @exitcode 0 if successfull
+# @exitcode 1 if failed
+psqlaexecute () {
+    if [ $# -ne 1 ]; then
+        echo "What do you want to execute? ($#) $*"
+        return 1
+    fi
+
+    res=$($PSQLA -c "$1")
+    if [ $? -ne 0 ]; then
+        echo "SQL: $1 Failed"
+        return 1
+    fi
+    return 0
+}
 # @description Execute file of sql-queries/statements on the the new database
 # @arg $1 string filename to execute
 # @exitcode 0 if successfull
