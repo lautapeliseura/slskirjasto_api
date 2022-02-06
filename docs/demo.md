@@ -2,7 +2,7 @@
 
 ## Asennus
 
-Demo-koneeseen on jo tullut asennettua kanta php-reportsin asennuksen [yhteydessä](externals/php-reports.md). Eli tämä ohje lähtee oletusesta, että php-reports on asennettu ja siinä sivussa postgresql-server 14, composer ja sivuosumina kasa php-riippuvuuksia sekä luotu [$DOCWEBROOT](usage.md#paramssh-dokumentaatio). Jos käyttäjätunnuksesi ei ole postgresql superuser, vaihda sellaiseen käyttäjään, joka on, koska kannan ja käyttäjien luominen edellyttää superuser-tason oikeuksia.
+Demo-koneeseen on jo tullut asennettua kanta php-reportsin asennuksen [yhteydessä](externals/php-reports.md). Eli tämä ohje lähtee oletuksesta, että php-reports on asennettu ja siinä sivussa postgresql-server 14, composer ja sivuosumina kasa php-riippuvuuksia sekä luotu [$DOCWEBROOT](usage.md#paramssh-dokumentaatio). Jos käyttäjätunnuksesi ei ole postgresql superuser, vaihda sellaiseen käyttäjään, joka on, koska kannan ja käyttäjien luominen edellyttää superuser-tason oikeuksia.
 
 1. `git clone git@github.com:lautapeliseura/slskirjasto_api.git` tai jos et ole git-käyttäjä,  jolla on ssh-avaimia niin: `git clone https://github.com/lautapeliseura/slskirjasto_api.git`
 2. `cd slskirjasto_api`

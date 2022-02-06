@@ -8,16 +8,18 @@
 
 ## Uuden kantarakenteen demoasennus ja github-repository
 
-Tavoitteet:
+Tavoitteet:  
+
 * SLS:n organisaatiossa on GitHub-repository
 * Projektin dokumentaatio on katsottavissa osoitteessa [generalfailure.net/slskirjasto_api](http://generalfailure.net/slskirjasto_api)
 * Uusi ja vanha kanta ovat kyseisellä koneella
 * Uuteen kantaan on pari demoraporttia katsottavissa php-reportsilla
-* Demoasennus on dokumentoitu
+* Demoasennus on [dokumentoitu](demo.md)
  
 ## Socialite ja käyttäjien hallinta
 
-Tavoitteet:
+Tavoitteet:  
+
 * Sanctum on konfiguroitu 
 * Socialite on konfigoroitu
 * APIin voi rekisteröityä käyttäjäksi APIn kautta
