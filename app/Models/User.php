@@ -49,4 +49,12 @@ class User extends Authenticatable
     function providers() {
         return $this->hasMany(Provider::class, 'user_id', 'id');
     }
+
+    function groups() {
+        return $this->belongsToMany(Group::class, 'groupmembers', 'user_id', 'group_id');
+    }
+
+    function personal_access_tokens() {
+        return $this->hasMany(PersonalAccessToken::class, 'tokenable_id');
+    }
 }
