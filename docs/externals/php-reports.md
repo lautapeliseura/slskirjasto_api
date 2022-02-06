@@ -8,7 +8,7 @@ Tämän takia olen forkannut molemmat projektit ja tehnyt kumpaankin vähän pai
 
 ## Php-reports installointi
 
-Tämä on kuvaus siitä miten php-reports on asennettu "demo"-ympäristöön, joka on CentOS Linux 7.9.2009 (Core) versiota ja pyörittää apachea. Oletuksena web-root on määritettynä hakemistoon /web/generalfailure.net
+Tämä on kuvaus siitä miten php-reports on asennettu "demo"-ympäristöön, joka on CentOS Linux 7.9.2009 (Core) versiota ja pyörittää apachea. Koneelle on asennettu php-versio 8, jossakin vaiheessa historiaa, todennäköisesti ohjeella, joka on samankaltainen kuin löytyy [computingforgeeks.com:sta](https://computingforgeeks.com/how-to-install-php-8-on-centos-linux/) Oletuksena web-root on määritettynä hakemistoon /web/generalfailure.net
 
 * `cd /web/generalfailure.net/`
 * `sudo setfacl -m group:wheel:rwx .`

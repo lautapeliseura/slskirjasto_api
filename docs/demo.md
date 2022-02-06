@@ -68,7 +68,7 @@ Esiripun takana haetaan SLS:n google-drivestä vanhan kannan dumppi ja toimiteta
 3. `pg_restore -d slskirjastoold ~/slskirjasto.dmp`- vanhan kannan palauttaminen
 4. `make oldimport`
 
-Nyt kannassa pitäisi olla slskirjaston sisältö sellaisena kuin se oli vanhassa kannassa, tosin niin että Peli-taulusta on poistettu duplikaatteja ja käyttäjät sekä lainaajat puuttuvat. Lainoista on poistettu tieto siitä kuka lainauksen on tehnyt, joten kannan sisältö on gdpr-vapaa.
+Nyt kannassa pitäisi olla slskirjaston sisältö sellaisena kuin se oli vanhassa kannassa, tosin niin että Peli-taulusta on poistettu duplikaatteja ja käyttäjät sekä lainaajat puuttuvat. Lainoista on poistettu tieto siitä kuka lainauksen on tehnyt, joten kannan sisältö täyttää toistaiseksi GDPR-vaatimukset.
 
 1. `yum install mkdocs -y` -mkdocs-dokumenttigeneraattorin asennus
 2. `sudo yum install python-setuptools` - mkdocs vaatii tämän, mutta paketti ei vaadi!
@@ -106,3 +106,24 @@ return array(
                                 'user'=>'slsreport',
 
 Raporttikäyttäjäksi ja salasanaksi pitää tietysti asettaa ne arvot, jotka olet määrittänyt `params.sh`-tiedostoon.
+
+Kun tämän jälkeen komentaa: `make installreports` kopioidaan raporttitiedostot oikealle paikalleen.
+
+Olen kuitenkin jossakin vaiheessa asentanut CentOS 7 :n php Remistä, joka on linkannut php-pgsql-palikan vanhaa 9.6-sarjan postgresql:ää tai jotakin vielä vanhempaa kamaa vasten. Vanha kama ei tue SCRAM-autentikointia, joten pitää downgradeta Postgresql:n turvallisuutta. Tämä tarkoittaa:
+
+* Vaihdetaan postgresql.conf:ssa autentikaatio md5:ksi  
+  
+    #password_encryption = scram-sha-256	# scram-sha-256 or md5
+    password_encryption = md5
+
+* Vaihdetaan pg_hba.conf:ssa pääsyt md5:ksi:
+
+    host	all	all	127.0.0.1/32	md5
+    host	all	all	::1/128	md5
+
+* Käynnistetään postgresql uudestaan: `sudo systemctl restart postgresql-14`
+* `source bin/dbhelper.sh`
+* `psqlexecute "alter user $DBUSER with encrypted password '$DBPASSWORD';"`
+* `psqlexecute "alter user $DBREPORTUSER with encrypted password '$DBREPORTUSERPASSWORD';"`
+
+Ja nyt pitäisi raporttien aueta [demokoneelta](https://generalfailure.net/slskirjasto_api/php-reports/)
