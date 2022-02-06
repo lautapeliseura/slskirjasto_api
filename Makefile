@@ -18,6 +18,8 @@ databasedone.txt :
 	touch databasedone.txt
 
 oldimport: oldimportdone.txt
+
+oldimportdone.txt:
 	$(BASHSOURCEDIR)/oldimport.sh
 	touch oldimportdone.txt
 
