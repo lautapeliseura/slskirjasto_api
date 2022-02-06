@@ -90,9 +90,12 @@ Nyt kannassa pitäisi olla slskirjaston sisältö sellaisena kuin se oli vanhass
 18. `make docsinstall` - Asennetaan dokumentaatio
     
 Aiemmin on asennettu php-reports, mutta sen konfiguraatio osoittaa malliraportteihin, käydään korjaamassa se osoittamaan slskirjaston raportteja.
-1. `cd /web/generalfailure.net/slskirjasto_api/php-reports/config`  
-    <?php
-return array(
+
+1. `cd /web/generalfailure.net/slskirjasto_api/php-reports/config`
+2. Muokataan tiedostoa config.php 
+   
+        <?php
+        return array(
         //the root directory of all your reports
         //reports can be organized in subdirectories
         'reportDir' => '/web/generalfailure.net/slskirjasto_api/reports',
@@ -100,7 +103,8 @@ return array(
         //the root directory of all dashboards
         'dashboardDir' => '/web/generalfailure.net/slskirjasto_api/dashboards',
     ...
-                            // Supports and PDO database
+
+                        // Supports and PDO database
                         'pdo'=>array(
                                 'dsn'=>'pgsql:host=localhost;dbname=slskirjasto',
                                 'user'=>'slsreport',
@@ -111,19 +115,22 @@ Kun tämän jälkeen komentaa: `make installreports` kopioidaan raporttitiedosto
 
 Olen kuitenkin jossakin vaiheessa asentanut CentOS 7 :n php Remistä, joka on linkannut php-pgsql-palikan vanhaa 9.6-sarjan postgresql:ää tai jotakin vielä vanhempaa kamaa vasten. Vanha kama ei tue SCRAM-autentikointia, joten pitää downgradeta Postgresql:n turvallisuutta. Tämä tarkoittaa:
 
+* `sudo su - postgres`
+* `cd 14/data`
 * Vaihdetaan postgresql.conf:ssa autentikaatio md5:ksi  
   
-    #password_encryption = scram-sha-256	# scram-sha-256 or md5
-    password_encryption = md5
+        #password_encryption = scram-sha-256	# scram-sha-256 or md5
+        password_encryption = md5
 
 * Vaihdetaan pg_hba.conf:ssa pääsyt md5:ksi:
 
-    host	all	all	127.0.0.1/32	md5
-    host	all	all	::1/128	md5
+        host	all	all	127.0.0.1/32	md5
+        host	all	all	::1/128	md5
 
+* `exit`
 * Käynnistetään postgresql uudestaan: `sudo systemctl restart postgresql-14`
 * `source bin/dbhelper.sh`
 * `psqlexecute "alter user $DBUSER with encrypted password '$DBPASSWORD';"`
 * `psqlexecute "alter user $DBREPORTUSER with encrypted password '$DBREPORTUSERPASSWORD';"`
 
-Ja nyt pitäisi raporttien aueta [demokoneelta](https://generalfailure.net/slskirjasto_api/php-reports/)
+Ja nyt pitäisi raporttien aueta [demokoneelta](https://generalfailure.net/slskirjasto_api/php-reports/).

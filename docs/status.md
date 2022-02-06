@@ -3,7 +3,7 @@
 | Päivämäärä | Tavoite | Status | Askel |
 |------------|---------|-------|--------|
 | 2022-02-06 | 2022-02-13 | Odottaa | Socialite, käyttäjien hallinta |
-| 2022-02-05 | 2022-02-06 | Kesken | Uuden kantarakenteen demoasennus ja github-repository [1](#uuden-kantarakenteen-demoasennus-ja-github-repository) |
+| 2022-02-05 | 2022-02-06 | Valmis | Uuden kantarakenteen demoasennus ja github-repository [1](#uuden-kantarakenteen-demoasennus-ja-github-repository) |
 
 
 ## Uuden kantarakenteen demoasennus ja github-repository
