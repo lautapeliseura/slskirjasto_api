@@ -29,7 +29,7 @@ mkdocs:
 install: docsinstall
 
 schemadocs:
-	$(BASHSOURCEDIR)/schemadocs.sh
+	$(BASHSOURCEDIR)/schemadoc.sh
 	
 docsinstall:
 	$(BASHSOURCEDIR)/installwebdocs.sh

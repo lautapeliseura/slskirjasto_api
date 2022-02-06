@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 #@file bin/installwebdocs.sh
 #@brief Installs documentation to web-directory
 #@description Cleans old files from target web-directory and copies
