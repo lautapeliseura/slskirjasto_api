@@ -14,6 +14,8 @@ source $DDIR/bin/dbhelper.sh
 OLDIMPORT=$DDIR/oldimport
 
 psqloldfile $OLDIMPORT/cleanPeli.sql || exit 1
+# Ensimmäinen siivous jättää vielä kaksi peliä, jotka ovat duplikaatteja eri nimellä
+psqloldfile $OLDIMPORT/cleanPeli.sql || exit 1
 
 psqloldexecute "update kokoelmapeli set lahjoittaja='Nestori Lehtonen' where lahjoittaja='Nestori Lehtonen; Geekissä listattua varhaisempi versio arviolta vuodelta 1966';" || exit 1
 views="vCollectionGames.sql vCollections.sql vDonors.sql vEvents.sql vGames.sql vLoans.sql"
