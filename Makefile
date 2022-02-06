@@ -35,4 +35,4 @@ docsinstall:
 	$(BASHSOURCEDIR)/installwebdocs.sh
 
 installreports:
-	cp reports/* $(DOCWEBROOT/reports)	
+	cp reports/* $(DOCWEBROOT)/reports	
