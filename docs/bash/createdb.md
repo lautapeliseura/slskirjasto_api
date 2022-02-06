@@ -18,7 +18,6 @@ Creates a database user if one doesn't already exist
 #### Arguments
 
 * **$1** (string): username to create
-
 #### Exit codes
 
 * **0**: if creation succeeded
