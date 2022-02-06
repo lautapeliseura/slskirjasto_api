@@ -35,5 +35,5 @@ docsinstall:
 	$(BASHSOURCEDIR)/installwebdocs.sh
 
 installreports:
-	[ -d $(DOCWEBROOT)/reports ] || mkdir -p $(DOCWEBROOT)
-	cp reports/* $(DOCWEBROOT)/reports	
+	[ -d $(DOCWEBROOT)/reports/pgsql ] || mkdir -p $(DOCWEBROOT)/reports/pgsql
+	cp -r reports/* $(DOCWEBROOT)/reports	
