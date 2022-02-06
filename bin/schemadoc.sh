@@ -9,13 +9,14 @@ export DDIR=${DDIR%/bin}
 PARAMS=$DDIR/params.sh
 source $PARAMS
 myDBUSER=$(whoami)
-myDBPASSWORD=whocares
-
+myDBPASSWORD=$PGPASSWORD
+#myDBUSER=$DBUSER
+#myDBPASSWORD=$DBPASSWORD
 if [ ! -d $SCHEMADOCS ]; then
     mkdir -p $SCHEMADOCS || (echo "Failed to create $SCHEMADOCS" && exit 1)
 fi
 
-java -jar $SCHEMASPY -t pgsql11 -db $DATABASE -o $SCHEMADOCS -u $myDBUSER -host $DBHOST -p $myDBPASSWORD -dp $PGSQLJDBC
+java -jar $SCHEMASPY -t pgsql11 -db $DATABASE -o $SCHEMADOCS -u $myDBUSER -host $DBHOST -p $myDBPASSWORD -dp $PGSQLJDBC -vizjs
 
 if [ $? -ne 0 ]; then
     echo "Schemaspy $SCHEMASPY failed"
@@ -26,7 +27,7 @@ if [ ! -z $OLDSCHEMADOCS ]; then
     if [ ! -d $OLDSCHEMADOCS ]; then
         mkdir -p $OLDSCHEMADOCS || (echo "Failed to create $OLDSCHEMADOCS" && exit 1)
     fi;
-    java -jar $SCHEMASPY -t pgsql11 -db $OLDDATABASE -o $OLDSCHEMADOCS -u $myDBUSER -host $DBHOST -p $myDBPASSWORD -dp $PGSQLJDBC
+    java -jar $SCHEMASPY -t pgsql11 -db $OLDDATABASE -o $OLDSCHEMADOCS -u $myDBUSER -host $DBHOST -p $myDBPASSWORD -dp $PGSQLJDBC -vizjs
     if [ $? -ne 0 ]; then
         echo "Schemaspy failed with old database"
         exit 1
