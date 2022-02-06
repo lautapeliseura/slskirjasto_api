@@ -33,3 +33,6 @@ schemadocs:
 	
 docsinstall:
 	$(BASHSOURCEDIR)/installwebdocs.sh
+
+installreports:
+	cp reports/* $(DOCWEBROOT/reports)	

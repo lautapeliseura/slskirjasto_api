@@ -29,12 +29,12 @@ Centos 7:n repoissa on liian vanha composer, joten asennetaan se tässä vaihees
 
 Sitten tajutaan, että demopalvelimella ei ole edes Postgresql-kantaa, joten asennellaan:
 
-* `sudo yum install postgresql postgresql-server postgresql-jdbc -y`
-* `sudo postgresql-setup initdb`
-* `sudo systemctl enable postgresql --now`
+* Noudatetaan pätevää ohjetta [computingforgeeks.com:sta](https://computingforgeeks.com/how-to-install-postgresql-14-centos-rhel-7/) 
 * `sudo su - postgres`
 * `createuser mos -s`
 * `exit`
+* `sudo yum install postgresql-jdbc -y`
+* `sudo yum install php-pgsql -y`
 
 Asennuksen jälkeen luodaan kantakäyttäjä omalla käyttäjätunnuksella ja vivulla "-s", jotta saadaan kaikki maailman oikeudet.
 
