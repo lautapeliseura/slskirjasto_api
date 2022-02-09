@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\SystemGroupController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,10 +15,19 @@ use App\Http\Controllers\LoginController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::controller(UserController::class)->middleware(['auth:sanctum'])->group(function (){
+    Route::get('/user', 'get');
+    Route::get('/user/tokens', 'getTokens');
+    Route::delete('/user/token/{id}', 'deleteToken');
 });
 
-Route::get('login/{provider}', [LoginController::class, 'redirectToProvider']);
+Route::get('login/{provider?}', [LoginController::class, 'redirectToProvider'])->name('login');
 Route::get('login/{provider}/callback', [LoginController::class, 'handleProviderCallback']);
+
+Route::controller(SystemGroupController::class)->middleware(['auth:sanctum'], ['Taikaviitta'])->group(function () {
+    Route::get('/systemGroups', 'getGroups');
+    Route::get('/systemGroup/{id}/', 'getGroup');
+    Route::get('/systemGroup/{id}/members', 'getGroupMembers');
+    Route::post('/systemGroup/{id}/member', 'addMember');
+    Route::delete('/systemGroup/{id}/member/{memberid}', 'deleteMember');
+});

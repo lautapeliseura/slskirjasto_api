@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     //
-    public function redirectToProvider($provider)
+    public function redirectToProvider($provider="github")
     {
         $validated = $this->validateProvider($provider);
         if (!is_null($validated)) {

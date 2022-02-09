@@ -2,7 +2,7 @@ drop table if exists groups CASCADE;
 create table groups (
     group_name      varchar(255) not null unique,
     group_purpose   varchar(512),
-
+    group_type      varchar(20) default='System',
     user_id         bigint,
 
     like templates._base including all,

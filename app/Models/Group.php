@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Group extends Model
 {
     use HasFactory;
+
+    function users() {
+        return $this->hasManyThrough(User::class, Groupmember::class, 'group_id', 'id', 'id', 'user_id');
+    }
 }
