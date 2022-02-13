@@ -4,9 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Http\Models\User;
 
-class Taikaviitta
+class Kayttaja
 {
     /**
      * Handle an incoming request.
@@ -19,11 +19,11 @@ class Taikaviitta
     {
         $user = auth('sanctum')->user();
         if (!$user) {
-            return response()->json([ 'error'=>"Um, no user?"], 400);
-        } 
-        $t = $user->groups()->firstWhere('group_name', 'Taikaviitat');
-        if (!$t) {
-            return response()->json(['error'=>"Sorry, not permitted"], 400);
+            return response()->json(["error"=>"Um, no user?"], 400);
+        }
+        $t = $user->groups()->where('group_name', 'Taikaviitat')->orWhere('group_name', 'Käyttäjät')->first();
+        if (is_null($t)) {
+            return response()->json(['error'=>'Sorry, not permitted'], 400);
         }
         return $next($request);
     }

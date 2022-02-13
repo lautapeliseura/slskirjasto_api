@@ -57,4 +57,5 @@ class User extends Authenticatable
     function personal_access_tokens() {
         return $this->hasMany(PersonalAccessToken::class, 'tokenable_id');
     }
-}
+
+ }
