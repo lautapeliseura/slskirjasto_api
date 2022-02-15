@@ -58,4 +58,7 @@ class User extends Authenticatable
         return $this->hasMany(PersonalAccessToken::class, 'tokenable_id');
     }
 
+    function isTaikaviitta() : bool {
+        return $this->groups()->firstWhere('group_name','Taikaviitat') ? true : false;
+    }
  }

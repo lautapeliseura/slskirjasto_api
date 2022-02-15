@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SystemGroupController;
+use App\Http\Controllers\OwnerGroupController;
 use App\Http\Middleware\Taikaviitta;
 /*
 |--------------------------------------------------------------------------
@@ -35,4 +36,14 @@ Route::controller(SystemGroupController::class)->middleware(['auth:sanctum','tai
     Route::get('/systemGroup/{id}/members', 'getGroupMembers');
     Route::post('/systemGroup/member', 'addMember');
     Route::delete('/systemGroup/{id}/member/{memberid}', 'deleteMember');
+});
+
+Route::controller(OwnerGroupController::class)->middleware(['auth:sanctum', 'kayttaja'])->group(function () {
+    Route::get('/ownerGroups', 'getGroups');
+    Route::post('/ownerGroup', 'create');
+    Route::get('/ownerGroup/{id}/members', 'getGroupMembers');
+    Route::post('/ownerGroup/member', 'addMember');
+    Route::delete('/ownerGroup/{id}', 'delete');
+    Route::patch('/ownerGroup', 'update');
+    Route::delete('/ownerGroup/{id}/members/{memberid}', 'deleteMember');
 });

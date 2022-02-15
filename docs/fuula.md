@@ -13,3 +13,4 @@
 * make - Fedoran repoista
 * git - Fedoran repoista
 * php 8.x - Fedoran repoista
+* [Postman](https://www.postman.com/) - Fedoran ohjelmistot, flatpak

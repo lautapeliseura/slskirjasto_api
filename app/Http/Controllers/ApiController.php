@@ -21,4 +21,8 @@ class ApiController extends Controller
     protected function missing(string $what) {
         return response()->json(["error"=>$what], 400);
     }
+
+    protected function unauthorized(string $what) {
+        return response()->json(["error"=>$what], 401);
+    }
 }
