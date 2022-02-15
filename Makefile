@@ -3,6 +3,8 @@ all: bashdocs mkdocks
 $(BASHDOCDIR)/%.md : $(BASHSOURCEDIR)/%.sh
 	shdoc < $< > $@
 
+docs: bashdocs mkdocs schemadocs docsinstall
+
 bashdocs: $(BASHDOCTGTS)
 
 clean:
