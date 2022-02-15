@@ -9,6 +9,7 @@ class Groupmember extends Model
 {
     use HasFactory;
     protected $guarded=[];
+    protected $hidden=["laravel_trough_key"];
 
     function role() {
         return $this->hasOne(Role::class, 'id','role_id');

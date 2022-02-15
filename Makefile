@@ -10,12 +10,15 @@ clean:
 	rm databasedone.txt
 	rm oldimportdone.txt
 
-database: databasedone.txt
+database: databasedone.txt views
 
 databasedone.txt :
 	$(BASHSOURCEDIR)/createdb.sh
 	$(BASHSOURCEDIR)/createtables.sh
 	touch databasedone.txt
+
+views: 
+	$(BASHSOURCEDIR)/createviews.sh
 
 oldimport: oldimportdone.txt
 

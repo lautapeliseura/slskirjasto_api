@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Group extends Model
 {
     use HasFactory;
-    protected $hidden=[ "schema_version", "group_type"];
+    protected $hidden=[ 
+            "schema_version"
+            , "group_type"
+            , "pivot"
+    ];
     protected $guarded=[];
 
     function users() {

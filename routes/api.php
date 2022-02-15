@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SystemGroupController;
 use App\Http\Controllers\OwnerGroupController;
+use App\Http\Controllers\RoleController;
 use App\Http\Middleware\Taikaviitta;
 /*
 |--------------------------------------------------------------------------
@@ -46,4 +47,8 @@ Route::controller(OwnerGroupController::class)->middleware(['auth:sanctum', 'kay
     Route::delete('/ownerGroup/{id}', 'delete');
     Route::patch('/ownerGroup', 'update');
     Route::delete('/ownerGroup/{id}/members/{memberid}', 'deleteMember');
+});
+
+Route::controller(RoleController::class)->middleware(['auth:sanctum', 'kayttaja'])->group(function () {
+    Route::get('/roles', 'getRoles');
 });
