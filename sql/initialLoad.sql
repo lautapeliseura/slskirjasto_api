@@ -3,7 +3,7 @@ insert into groups (group_name, group_purpose, created_at, created_by) values ('
 insert into groups (group_name, group_purpose, created_at, created_by) values ('SLS', 'Suomen lautapeliseura ry:n pelikokoelman ylläpitoryhmä', now(), 'Initial load');
 insert into groups (group_name, group_purpose, created_at, created_by) values ('Taikaviitat', 'Koko järjestelmän ylläpitoryhmä', now(), 'Initial load');
 insert into groups (group_name, group_purpose, created_at, created_by) values ('Käyttäjät', 'Järjestelmän kokoelmaomistajat', now(), 'Initial load');
-insert into groups (group_name, group_purpose, creted_at, created_by) values ('Operaattorit', 'Lainaustiskin kaverit', now(), 'Initial load');
+insert into groups (group_name, group_purpose, created_at, created_by) values ('Operaattorit', 'Lainaustiskin kaverit', now(), 'Initial load');
 
 truncate table roles cascade;
 insert into roles (role_name, role_description, created_at, created_by) values ('Owner', 'The owner of a subject', now(), 'Initial load');
